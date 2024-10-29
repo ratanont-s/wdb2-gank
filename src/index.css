@@ -6,4 +6,34 @@
   html {
     font-family: "Poppins", sans-serif;
   }
+  h1 {
+    @apply text-[96px] leading-[116px] font-bold;
+  }
+  h2 {
+    @apply text-[64px] leading-[92px] font-bold;
+  }
+  h3 {
+    @apply text-[48px] leading-[72px] font-bold;
+  }
+  h4 {
+    @apply text-[40px] leading-[60px] font-bold;
+  }
+  h5 {
+    @apply text-[32px] leading-[48px] font-bold;
+  }
+  h6 {
+    @apply text-[24px] leading-[32px] font-bold;
+  }
+  .SubHeadling {
+    @apply text-[18px] leading-[24px] font-semibold;
+  }
+  .Body-Text {
+    @apply text-[16px] leading-[20px] font-Regular;
+  }
+  .Subtitle {
+    @apply text-[14px] leading-[20px] font-Regular;
+  }
+  .Caption {
+    @apply text-[12px] leading-[16px] font-Regular;
+  }
 }

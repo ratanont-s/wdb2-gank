@@ -1,7 +1,8 @@
 import React from "react";
+// import Hero from "../components/Hero";sdasd
 
 const Home = () => {
-  return <h1>Home</h1>;
+  return <>{/* <Hero /> */}</>;
 };
 
 export default Home;
