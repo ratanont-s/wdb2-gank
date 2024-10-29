@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../public/favicon-32x32.png";
+import { Icons } from "./Icons";
+
 const MENUS_LEFT = [
   { name: "Men", route: "/products" },
   { name: "Women", route: "/products" },
@@ -26,6 +28,11 @@ const Header = () => {
                 <Link to={menu.route}>{menu.name}</Link>
               </li>
             ))}
+          </ul>
+          <ul>
+            <li>
+              <Icons.search />
+            </li>
           </ul>
         </div>
       </div>
