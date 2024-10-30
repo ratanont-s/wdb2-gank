@@ -36,4 +36,16 @@
   .Caption {
     @apply text-[12px] leading-[16px] font-Regular;
   }
+  select {
+    @apply bg-white p-[7px_58px_7px_10px] w-full min-h-[54px] outline-none border border-secondary-300 appearance-none bg-[url('/arrow-down.svg')] bg-no-repeat bg-[right_10px_center] bg-[length:40px_40px] focus:border-primary-700;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-secondary text-white p-[7px_10px] min-h-[54px] grid gap-2 place-items-center transition hover:bg-primary hover:text-secondary active:bg-secondary active:text-primary disabled:bg-secondary-300 disabled:text-secondary-500;
+  }
+  .btn-secondary {
+    @apply bg-white border border-secondary-300 p-[7px_10px] min-h-[54px] grid gap-2 place-items-center transition hover:border-primary active:border-primary-700 disabled:bg-secondary-300 disabled:text-secondary-500;
+  }
 }

@@ -4,11 +4,17 @@ import logo from "../../public/favicon-32x32.png";
 import { Icons } from "./Icons";
 
 const MENUS_LEFT = [
-  { name: "Men", route: "/products" },
-  { name: "Women", route: "/products" },
-  { name: "Kids", route: "/products" },
-  { name: "Shoes", route: "/products" },
-  { name: "Accessories", route: "/products" },
+  { name: "Men", route: "/products?categories=all-men" },
+  { name: "Women", route: "/products?categories=all-ladies" },
+  { name: "Kids", route: "/products?categories=all-kids" },
+  {
+    name: "Shoes",
+    route: "/products?categories=men-shoes&categories=ladies-shoes",
+  },
+  {
+    name: "Accessories",
+    route: "/products?categories=men-accessories&categories=ladies-accessories",
+  },
 ];
 
 const Header = () => {
