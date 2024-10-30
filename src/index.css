@@ -24,17 +24,17 @@
   h6 {
     @apply text-[24px] leading-[32px] font-bold;
   }
-  .SubHeadling {
+  .SubHeadLing {
     @apply text-[18px] leading-[24px] font-semibold;
   }
   .Body-Text {
-    @apply text-[16px] leading-[20px] font-Regular;
+    @apply text-[16px] leading-[20px] font-normal;
   }
   .Subtitle {
-    @apply text-[14px] leading-[20px] font-Regular;
+    @apply text-[14px] leading-[20px] font-normal;
   }
   .Caption {
-    @apply text-[12px] leading-[16px] font-Regular;
+    @apply text-[12px] leading-[16px] font-normal;
   }
   select {
     @apply bg-white p-[7px_58px_7px_10px] w-full min-h-[54px] outline-none border border-secondary-300 appearance-none bg-[url('/arrow-down.svg')] bg-no-repeat bg-[right_10px_center] bg-[length:40px_40px] focus:border-primary-700;
