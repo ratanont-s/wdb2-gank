@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Icons } from "../Icons";
+import { formatCurrency } from "../../utils/helpers";
 
 const ProductList = ({ products }) => {
   return (
@@ -34,7 +35,20 @@ const ProductList = ({ products }) => {
                       </Fragment>
                     ))}
                   </div>
-                  <p>THB {product.price}</p>
+                  <h6>
+                    {product.price > product.promotionalPrice ? (
+                      <>
+                        <del className="text-sm font-normal">
+                          {formatCurrency(product.price)}
+                        </del>
+                        <span className="text-danger">
+                          {formatCurrency(product.price)}
+                        </span>
+                      </>
+                    ) : (
+                      <>{formatCurrency(product.price)}</>
+                    )}
+                  </h6>
                 </div>
               </Link>
             </li>
