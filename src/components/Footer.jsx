@@ -1,5 +1,6 @@
 import React from "react";
 import { Icons } from "./Icons";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -9,10 +10,22 @@ export default function Footer() {
           <section className="size-full max-w-[503px] mb-[56px] md:mb-[16px]">
             <h5 className="mb-6">Featured product</h5>
             <ul className="SubHeadLing flex flex-col gap-[16px]">
-              <li>Men</li>
-              <li>Ladies</li>
-              <li>Shoes</li>
-              <li>Accessories</li>
+              <li>
+                <Link to="/products?categories=all-men">Men</Link>
+              </li>
+              <li>
+                <Link to="/products?categories=all-ladies">Ladies</Link>
+              </li>
+              <li>
+                <Link to="/products?categories=men-shoes&categories=ladies-shoes">
+                  Shoes
+                </Link>
+              </li>
+              <li>
+                <Link to="/products?categories=men-accessories&categories=ladies-accessories">
+                  Accessories
+                </Link>
+              </li>
             </ul>
           </section>
           <section className="size-full max-w-[503px] flex flex-col items-center md:items-start mb-[56px] md:mb-[16px]">

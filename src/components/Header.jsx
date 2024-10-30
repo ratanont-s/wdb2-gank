@@ -5,7 +5,6 @@ import { Icons } from "./Icons";
 const MENUS_LEFT = [
   { name: "Men", route: "/products?categories=all-men" },
   { name: "Women", route: "/products?categories=all-ladies" },
-  { name: "Kids", route: "/products?categories=all-kids" },
   {
     name: "Shoes",
     route: "/products?categories=men-shoes&categories=ladies-shoes",
@@ -51,7 +50,9 @@ export default function Header() {
                 <Icons.iconAccount />
               </li>
               <li>
-                <Icons.iconCart />
+                <Link to="/cart">
+                  <Icons.iconCart />
+                </Link>
               </li>
             </ul>
           </div>
