@@ -24,16 +24,16 @@
   h6 {
     @apply text-[24px] leading-[32px] font-bold;
   }
-  .SubHeadling {
+  .SubHeadLing {
     @apply text-[18px] leading-[24px] font-semibold;
   }
   .Body-Text {
-    @apply text-[16px] leading-[20px] font-Regular;
+    @apply text-[16px] leading-[20px] font-normal;
   }
   .Subtitle {
-    @apply text-[14px] leading-[20px] font-Regular;
+    @apply text-[14px] leading-[20px] font-normal;
   }
   .Caption {
-    @apply text-[12px] leading-[16px] font-Regular;
+    @apply text-[12px] leading-[16px] font-normal;
   }
 }
