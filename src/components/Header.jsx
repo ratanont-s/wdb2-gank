@@ -1,13 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Icons } from "./Icons";
-import { useState } from "react";
 
 const MENUS_LEFT = [
-  { name: "Men", route: "/products" },
-  { name: "Women", route: "/products" },
-  { name: "Shoes", route: "/products" },
-  { name: "Accessories", route: "/products" },
+  { name: "Men", route: "/products?categories=all-men" },
+  { name: "Women", route: "/products?categories=all-ladies" },
+  { name: "Kids", route: "/products?categories=all-kids" },
+  {
+    name: "Shoes",
+    route: "/products?categories=men-shoes&categories=ladies-shoes",
+  },
+  {
+    name: "Accessories",
+    route: "/products?categories=men-accessories&categories=ladies-accessories",
+  },
 ];
 
 export default function Header() {

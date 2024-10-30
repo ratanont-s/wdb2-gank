@@ -3,7 +3,7 @@ import { Icons } from "./Icons";
 
 export default function Footer() {
   return (
-    <footer className="w-full h-auto flex flex-col justify-center content-center absolute bottom-0 bg-secondary text-white text-center md:text-start">
+    <footer className="w-full h-auto flex flex-col justify-center content-center  bg-secondary text-white text-center md:text-start">
       <div className="size-full container py-[24px] flex flex-col items-center md:items-center gap-0 md:gap-4">
         <div className="flex flex-col gap-4 justify-between md:flex-row content-center ">
           <section className="size-full max-w-[503px] mb-[56px] md:mb-[16px]">
