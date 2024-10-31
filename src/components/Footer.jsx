@@ -40,28 +40,30 @@ export default function Footer() {
               <Icons.iconNext />
             </div>
           </section>
-          <section className="size-full max-w-[503px] flex flex-col gap-4 mb-[16px] md:mb-[16px]">
+          <section className="size-full max-w-[503px] flex flex-col mb-[16px] md:mb-[16px]">
             <h5 className="mb-6">Customer services</h5>
-            <p className="BodyText ">
-              MBK Tower 20th Floor, 444, Phaya Thai Rd, Wang Mai, Pathum Wan,
-              Bangkok 10330
-            </p>
-            <p className="BodyText">Email: jane.doe@realmail.com</p>
-            <form className="flex flex-col gap-[24px]">
-              <input
-                className="w-full py-[16px] px-[10px] text-secondary"
-                type="email"
-                placeholder="Enter your email"
-              />
-              <div>
-                <button
-                  className="bg-primary-700 text-secondary px-[10px] py-[17px]"
-                  type="submit"
-                >
-                  Subscribe
-                </button>
-              </div>
-            </form>
+            <div className="grid gap-4">
+              <p className="BodyText ">
+                MBK Tower 20th Floor, 444, Phaya Thai Rd, Wang Mai, Pathum Wan,
+                Bangkok 10330
+              </p>
+              <p className="BodyText">Email: jane.doe@realmail.com</p>
+              <form className="flex flex-col gap-[24px]">
+                <input
+                  className="w-full py-[16px] px-[10px] text-secondary"
+                  type="email"
+                  placeholder="Enter your email"
+                />
+                <div>
+                  <button
+                    className="bg-primary-700 text-secondary px-[10px] py-[17px]"
+                    type="submit"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              </form>
+            </div>
           </section>
         </div>
         <div className="w-full flex justify-between md:flex-row flex-col items-center gap-1">
