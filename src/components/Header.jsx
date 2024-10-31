@@ -17,7 +17,7 @@ const MENUS_LEFT = [
 
 export default function Header() {
   return (
-    <header className="bg-secondary text-white py-2">
+    <header className="bg-secondary text-white py-2 fixed top-0 left-0 right-0 z-50">
       <div className="container">
         <div className="flex items-center">
           <div className="w-full flex items-center justify-between">
