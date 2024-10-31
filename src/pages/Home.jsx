@@ -27,7 +27,12 @@ const Home = () => {
   const fetchFeaturedProducts = async () => {
     try {
       console.log("fetching featured products");
-      const response = await axios.get(`${BASE_URL}/products?limit=4`);
+      const response = await axios.get(`${BASE_URL}/products`, {
+        params: {
+          limit: 4,
+          sort: "ratings:desc",
+        },
+      });
       if (response.status === 200) {
         setFeaturedProducts(response.data.data);
       }
@@ -134,7 +139,7 @@ const FeaturedProductsView = ({ products }) => {
                     </Fragment>
                   ))}
                 </div>
-                <p>THB {product.price}</p>
+                <p className="text-right font-semibold">THB {product.price}</p>
               </div>
             </Link>
           </div>
