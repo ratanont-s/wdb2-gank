@@ -35,7 +35,7 @@ export default function Footer() {
             </p>
             <div className="flex w-[166px] items-center bg-white text-secondary px-[10px] py-[17px] gap-[18px]">
               <button className="BodyText" type="submit">
-                Sing up now
+                Sign up now
               </button>
               <Icons.iconNext />
             </div>

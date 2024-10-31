@@ -8,18 +8,18 @@ const API_URL = "https://api.storefront.wdb.skooldio.dev";
 const Products = () => {
   const [searchParams] = useSearchParams();
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [sortOption, setSortOption] = useState("default");
 
   const categoryParam = searchParams.get("categories");
   const categoryParamAll = searchParams.getAll("categories");
 
   useEffect(() => {
     const fetchProducts = async () => {
-      setLoading(true);
       try {
         const response = await axios.get(
           `${API_URL}/products${
-            categoryParamAll ? `?categories=${categoryParamAll.join(",")}` : ""
+            categoryParamAll ? `?categories=${categoryParamAll.join()}` : ""
           }`
         );
         const allProducts = response.data.data;
@@ -33,6 +33,38 @@ const Products = () => {
     fetchProducts();
   }, [categoryParam]);
 
+  const sortedProducts = [...products].sort((a, b) => {
+    if (sortOption === "priceLowToHigh") {
+      return a.price - b.price;
+    } else if (sortOption === "priceHighToLow") {
+      return b.price - a.price;
+    } else if (sortOption === "bestSeller") {
+      return b.ratings - a.ratings;
+    } else {
+      return 0;
+    }
+  });
+
+  const handleSortChange = (event) => {
+    setSortOption(event.target.value);
+  };
+
+  const getCategoryName = (categoryParamAll) => {
+    const category = categoryParamAll.join();
+    switch (category) {
+      case "all-men":
+        return "Men's Clothes";
+      case "all-ladies":
+        return "Women's Clothes";
+      case "men-shoes,ladies-shoes":
+        return "Shoes";
+      case "men-accessories,ladies-accessories":
+        return "Accessories";
+      default:
+        return "";
+    }
+  };
+
   return (
     <main className="p-[24px_0px_60px] lg:p-[64px_0px_95px]">
       <div className="container">
@@ -40,12 +72,16 @@ const Products = () => {
           <div>Filters</div>
           <div>
             <div className="flex items-end justify-between gap-4 mb-6 lg:mb-[42px]">
-              <h5 className="w-full">Product List</h5>
-              <select className="w-auto">
-                <option>Sort by</option>
-                <option>Price - Low to high</option>
-                <option>Price - High to low</option>
-                <option>Best seller</option>
+              <h5 className="w-full">{getCategoryName(categoryParamAll)}</h5>
+              <select
+                className="w-auto"
+                value={sortOption}
+                onChange={handleSortChange}
+              >
+                <option value="default">Sort by</option>
+                <option value="priceLowToHigh">Price - Low to High</option>
+                <option value="priceHighToLow">Price - High to Low</option>
+                <option value="bestSeller">Ratings</option>
               </select>
             </div>
             {loading ? (
@@ -53,7 +89,7 @@ const Products = () => {
                 <img src="/loading.gif" alt="Loading..." loading="lazy" />
               </div>
             ) : (
-              <ProductList products={products} />
+              <ProductList products={sortedProducts} />
             )}
           </div>
         </div>

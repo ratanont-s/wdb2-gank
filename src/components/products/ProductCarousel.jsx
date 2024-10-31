@@ -1,33 +1,47 @@
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
-
-import { Navigation } from "swiper/modules";
+import React, { useState, useEffect, useRef } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const ProductCarousel = ({ imageUrls }) => {
+  const [nav1, setNav1] = useState(null);
+  const [nav2, setNav2] = useState(null);
+  let sliderRef1 = useRef(null);
+  let sliderRef2 = useRef(null);
+
+  useEffect(() => {
+    setNav1(sliderRef1);
+    setNav2(sliderRef2);
+  }, []);
+
   return (
-    <>
-      <Swiper
-        loop={false}
-        navigation={true}
-        modules={[Navigation]}
-        className="w-full overflow-hidden"
+    <div className="product-carousel">
+      <Slider
+        arrows={true}
+        asNavFor={nav2}
+        ref={(slider) => (sliderRef1 = slider)}
       >
-        {imageUrls?.map((item) => (
-          <SwiperSlide key={item}>
-            <img
-              className="w-full object-cover aspect-[1/1] md:aspect-[576/597]"
-              src={item}
-              alt=""
-            />
-          </SwiperSlide>
+        {imageUrls.map((image) => (
+          <div key={image} className="px-1">
+            <img src={image} alt="" loading="lazy" />
+          </div>
         ))}
-      </Swiper>
-    </>
+      </Slider>
+      <Slider
+        arrows={false}
+        asNavFor={nav1}
+        ref={(slider) => (sliderRef2 = slider)}
+        slidesToShow={4}
+        swipeToSlide={true}
+        focusOnSelect={true}
+      >
+        {imageUrls.map((image) => (
+          <div key={image} className="px-1">
+            <img src={image} alt="" loading="lazy" />
+          </div>
+        ))}
+      </Slider>
+    </div>
   );
 };
 
