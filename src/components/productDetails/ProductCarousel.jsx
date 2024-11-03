@@ -25,7 +25,7 @@ const ProductCarousel = ({ images }) => {
         {images?.map((image) => (
           <div key={image} className="px-1">
             <img
-              className="w-full aspect-[576/597] object-cover"
+              className="w-full object-cover aspect-square md:aspect-[576/597]"
               src={image}
               loading="lazy"
             />
@@ -43,7 +43,7 @@ const ProductCarousel = ({ images }) => {
         {images?.map((image) => (
           <div key={image} className="px-1">
             <img
-              className="w-full aspect-[135/162] object-cover"
+              className="w-full  object-cover aspect-square md:aspect-[135/162]"
               src={image}
               loading="lazy"
             />
