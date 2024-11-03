@@ -23,6 +23,8 @@ const ProductDetails = () => {
   const [showModal, setShowModal] = useState(false);
   const [relatedProducts, setRelatedProducts] = useState([]);
 
+  const sizeOrder = ["XS", "S", "M", "L", "XL", "XXL"];
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -40,9 +42,27 @@ const ProductDetails = () => {
         setProduct(productResponse.data);
         setRelatedProducts(relatedResponse.data.data);
 
+        // Custom sorting function based on the sizeOrder array
+        const sortedVariants = productResponse.data.variants.sort((a, b) => {
+          const indexA = sizeOrder.indexOf(a.size);
+          const indexB = sizeOrder.indexOf(b.size);
+
+          // If both sizes are in the sizeOrder array, sort by their index
+          if (indexA !== -1 && indexB !== -1) {
+            return indexA - indexB;
+          }
+
+          // If one size is not in the array, prioritize the one that is
+          if (indexA !== -1) return -1;
+          if (indexB !== -1) return 1;
+
+          // If neither size is in the array, maintain their original order
+          return 0;
+        });
+
         if (productResponse.data.variants.length > 0) {
           setSelectedColor(productResponse.data.variants[0].color);
-          setSelectedSize(productResponse.data.variants[0].size);
+          setSelectedSize(sortedVariants[0].size);
         }
       } catch (err) {
         setError("Product not found or failed to load.");

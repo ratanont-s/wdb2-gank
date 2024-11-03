@@ -4,6 +4,7 @@ import { Icons } from "../Icons";
 import { formatCurrency } from "../../utils/helpers";
 
 const CartItem = ({ item, onRemove, onUpdate }) => {
+  console.log("🚀 ~ CartItem ~ item:", item);
   const [cartItem, setCartItem] = useState(null);
 
   useEffect(() => {
