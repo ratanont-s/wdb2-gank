@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const ProductCarousel = ({ imageUrls }) => {
+const ProductCarousel = ({ images }) => {
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
   let sliderRef1 = useRef(null);
@@ -21,9 +21,9 @@ const ProductCarousel = ({ imageUrls }) => {
         asNavFor={nav2}
         ref={(slider) => (sliderRef1 = slider)}
       >
-        {imageUrls.map((image) => (
+        {images?.map((image) => (
           <div key={image} className="px-1">
-            <img src={image} alt="" loading="lazy" />
+            <img className="w-full" src={image} loading="lazy" />
           </div>
         ))}
       </Slider>
@@ -35,9 +35,9 @@ const ProductCarousel = ({ imageUrls }) => {
         swipeToSlide={true}
         focusOnSelect={true}
       >
-        {imageUrls.map((image) => (
+        {images?.map((image) => (
           <div key={image} className="px-1">
-            <img src={image} alt="" loading="lazy" />
+            <img src={image} loading="lazy" />
           </div>
         ))}
       </Slider>

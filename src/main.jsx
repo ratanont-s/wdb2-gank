@@ -4,18 +4,19 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
-import ErrorPage from './pages/Errors'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <NotFound />,
     children: [
       {
-        path: "/",
+        index: true,
         element: <Home />,
       },
       {
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
         element: <Products />,
       },
       {
-        path: "/products/:productId",
+        path: "/products/:id",
         element: <ProductDetails />,
       },
       {
@@ -31,7 +32,6 @@ const router = createBrowserRouter([
         element: <Cart />,
       },
     ],
-    errorElement: <ErrorPage />,
   },
 ]);
 

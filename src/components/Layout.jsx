@@ -1,17 +1,15 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import { CartProvider } from "../context/CartContext";
 
 const Layout = () => {
   return (
-    <div className="w-full min-h-screen flex flex-col">
+    <CartProvider>
       <Header />
-      <main className="container mt-[56px]">
-        <Outlet />
-      </main>
+      <Outlet />
       <Footer />
-    </div>
+    </CartProvider>
   );
 };
 
