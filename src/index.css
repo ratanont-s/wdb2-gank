@@ -63,4 +63,10 @@
   .product-carousel .slick-next{
     @apply right-2 before:bg-[url('/next.png')] xl:right-4;
   }
+  .product-carousel-nav .slick-slide img{
+    @apply border-2 border-transparent;
+  }
+  .product-carousel-nav .slick-slide.slick-current img{
+    @apply border-2 border-primary;
+  }
 }

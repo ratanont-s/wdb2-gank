@@ -33,6 +33,7 @@ const ProductCarousel = ({ images }) => {
         ))}
       </Slider>
       <Slider
+        className="product-carousel-nav"
         arrows={false}
         asNavFor={nav1}
         ref={(slider) => (sliderRef2 = slider)}
