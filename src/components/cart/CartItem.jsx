@@ -28,6 +28,7 @@ const CartItem = ({ item, onRemove, onUpdate }) => {
           className="w-full aspect-square object-cover mx-auto"
           src={cartItem?.imageUrls[0]}
           alt={cartItem?.name}
+          loading="lazy"
         />
       </div>
       <div className="flex justify-between gap-4 mb-5 md:mb-10">

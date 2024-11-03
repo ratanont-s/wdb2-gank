@@ -110,9 +110,34 @@ const Cart = () => {
           <div className="bg-white p-4 lg:p-6">
             <h6>Items</h6>
             {loading ? (
-              <div className="grid place-items-center">
-                <img src="/loading.gif" alt="Loading..." loading="lazy" />
-              </div>
+              <ul className="grid gap-6 divide-y divide-secondary-300">
+                <li className="pt-6 md:grid md:grid-cols-[162px_1fr] md:grid-rows-[auto_1fr] md:gap-x-6">
+                  <div className="mb-4 md:mb-0 md:row-span-2">
+                    <div className="w-full aspect-square object-cover bg-secondary-100"></div>
+                  </div>
+                  <div className="flex justify-between gap-4 mb-5 md:mb-10">
+                    <div className="w-full h-10 aspect-square object-cover bg-secondary-100"></div>
+                    <div className="w-10 h-10 aspect-square object-cover bg-secondary-100"></div>
+                  </div>
+                  <div className="grid gap-6 md:grid-cols-[1fr_auto] md:gap-4">
+                    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-2">
+                      <div className="col-span-2 md:col-span-1">
+                        <div className="bg-secondary-100 w-1/4 h-6 mb-2"></div>
+                        <div className="bg-secondary-100 w-full h-[54px] "></div>
+                      </div>
+                      <div>
+                        <div className="bg-secondary-100 w-1/4 h-6 mb-2"></div>
+                        <div className="bg-secondary-100 w-full h-[54px] "></div>
+                      </div>
+                      <div>
+                        <div className="bg-secondary-100 w-1/4 h-6 mb-2"></div>
+                        <div className="bg-secondary-100 w-full h-[54px] "></div>
+                      </div>
+                    </div>
+                    <div className="bg-secondary-100 w-1/3 h-8 ml-auto md:self-end md:w-[140px]"></div>
+                  </div>
+                </li>
+              </ul>
             ) : (
               <>
                 {cart && cart?.items?.length === 0 ? (
