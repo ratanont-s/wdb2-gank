@@ -98,91 +98,137 @@ const ProductDetails = () => {
     <main className="min-h-svh">
       <div className="container pt-6 pb-20 lg:py-16">
         <div className="grid md:grid-cols-2 md:gap-10">
-          <div className="mb-10 w-full overflow-hidden relative">
-            <ProductCarousel images={product?.imageUrls} />
-            {product?.price > product?.promotionalPrice && (
-              <span className="absolute top-6 right-1 bg-danger text-white py-1 px-[10px] lg:top-[83px] lg:text-2xl">
-                -{" "}
-                {Math.round(
-                  ((product?.price - product?.promotionalPrice) /
-                    product?.price) *
-                    100
+          {loading ? (
+            <>
+              <div className="mb-10 relative animate-pulse">
+                <div className="bg-secondary-100 w-full aspect-square"></div>
+                <div className="grid grid-cols-4 gap-2 mt-2">
+                  <div className="bg-secondary-100 w-full aspect-square"></div>
+                  <div className="bg-secondary-100 w-full aspect-square"></div>
+                  <div className="bg-secondary-100 w-full aspect-square"></div>
+                  <div className="bg-secondary-100 w-full aspect-square"></div>
+                </div>
+              </div>
+              <div className="animate-pulse">
+                <div className="bg-secondary-100 w-full h-10 mb-1"></div>
+                <div className="bg-secondary-100 w-full h-[60px] mb-1"></div>
+                <div className="grid gap-1 mb-6">
+                  <div className="bg-secondary-100 w-full h-6"></div>
+                  <div className="bg-secondary-100 w-full h-6"></div>
+                  <div className="bg-secondary-100 w-full h-6"></div>
+                  <div className="bg-secondary-100 w-1/2 h-6"></div>
+                </div>
+                <div className="bg-secondary-100 w-1/2 h-12 mb-6"></div>
+                <div className="flex gap-1 mb-10">
+                  <div className="bg-secondary-100 w-10 h-10"></div>
+                  <div className="bg-secondary-100 w-10 h-10"></div>
+                  <div className="bg-secondary-100 w-10 h-10"></div>
+                  <div className="bg-secondary-100 w-10 h-10"></div>
+                  <div className="bg-secondary-100 w-10 h-10"></div>
+                </div>
+                <div className="bg-secondary-100 w-1/4 h-6 mb-2"></div>
+                <div className="flex gap-2 mb-6">
+                  <div className="bg-secondary-100 w-full max-h-[86px] aspect-square"></div>
+                  <div className="bg-secondary-100 w-full max-h-[86px] aspect-square"></div>
+                  <div className="bg-secondary-100 w-full max-h-[86px] aspect-square"></div>
+                  <div className="bg-secondary-100 w-full max-h-[86px] aspect-square"></div>
+                </div>
+                <div className="bg-secondary-100 w-1/4 h-6 mb-2"></div>
+                <div className="bg-secondary-100 w-full h-[54px] mb-6"></div>
+                <div className="bg-secondary-100 w-full h-[54px]"></div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="mb-10 w-full overflow-hidden relative">
+                <ProductCarousel images={product?.imageUrls} />
+                {product?.price > product?.promotionalPrice && (
+                  <span className="absolute top-6 right-1 bg-danger text-white py-1 px-[10px] lg:top-[83px] lg:text-2xl">
+                    -{" "}
+                    {Math.round(
+                      ((product?.price - product?.promotionalPrice) /
+                        product?.price) *
+                        100
+                    )}
+                    %
+                  </span>
                 )}
-                %
-              </span>
-            )}
-          </div>
-          <div>
-            <div className="flex items-center justify-between gap-4 mb-1">
-              <p className="text-subheading">ID: {selectedVariant?.skuCode}</p>
-              <button>
-                <Icons.heart />
-              </button>
-            </div>
-            <h4 className="mb-1">{product?.name}</h4>
-            <p className="text-secondary-700 text-subheading mb-6">
-              {product?.description}
-            </p>
-            <div className="flex flex-col gap-2 mb-6">
-              {product?.price > product?.promotionalPrice ? (
-                <>
-                  <h5 className="bg-danger text-white py-2 px-[10px] w-fit">
-                    {formatCurrency(product?.promotionalPrice)}
-                  </h5>
+              </div>
+              <div>
+                <div className="flex items-center justify-between gap-4 mb-1">
                   <p className="text-subheading">
-                    From <del>{formatCurrency(product?.price)}</del>
+                    ID: {selectedVariant?.skuCode}
                   </p>
-                </>
-              ) : (
-                <h5>{formatCurrency(product?.price)}</h5>
-              )}
-            </div>
-            <ul className="flex mb-10">
-              {Array.from({ length: 5 }, (_, index) => (
-                <li key={index}>
-                  {index < product?.ratings ? (
-                    <Icons.review />
+                  <button>
+                    <Icons.heart />
+                  </button>
+                </div>
+                <h4 className="mb-1">{product?.name}</h4>
+                <p className="text-secondary-700 text-subheading mb-6">
+                  {product?.description}
+                </p>
+                <div className="flex flex-col gap-2 mb-6">
+                  {product?.price > product?.promotionalPrice ? (
+                    <>
+                      <h5 className="bg-danger text-white py-2 px-[10px] w-fit">
+                        {formatCurrency(product?.promotionalPrice)}
+                      </h5>
+                      <p className="text-subheading">
+                        From <del>{formatCurrency(product?.price)}</del>
+                      </p>
+                    </>
                   ) : (
-                    <Icons.review2 />
+                    <h5>{formatCurrency(product?.price)}</h5>
                   )}
-                </li>
-              ))}
-            </ul>
+                </div>
+                <ul className="flex mb-10">
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <li key={index}>
+                      {index < product?.ratings ? (
+                        <Icons.review />
+                      ) : (
+                        <Icons.review2 />
+                      )}
+                    </li>
+                  ))}
+                </ul>
 
-            {product && product?.variants && (
-              <>
-                <ColorSelector
-                  variants={product?.variants}
-                  selectedColor={selectedColor}
-                  onColorChange={setSelectedColor}
-                />
+                {product && product?.variants && (
+                  <>
+                    <ColorSelector
+                      variants={product?.variants}
+                      selectedColor={selectedColor}
+                      onColorChange={setSelectedColor}
+                    />
 
-                {/* Conditionally render SizeSelector if sizes are available */}
-                {hasSizes && (
-                  <SizeSelector
-                    variants={product.variants}
-                    selectedColor={selectedColor}
-                    selectedSize={selectedSize}
-                    onSizeChange={setSelectedSize}
-                  />
+                    {/* Conditionally render SizeSelector if sizes are available */}
+                    {hasSizes && (
+                      <SizeSelector
+                        variants={product.variants}
+                        selectedColor={selectedColor}
+                        selectedSize={selectedSize}
+                        onSizeChange={setSelectedSize}
+                      />
+                    )}
+                    <QuantitySelector
+                      quantity={quantity}
+                      onQuantityChange={setQuantity}
+                      maxQuantity={maxQuantity}
+                    />
+                  </>
                 )}
-                <QuantitySelector
-                  quantity={quantity}
-                  onQuantityChange={setQuantity}
-                  maxQuantity={maxQuantity}
-                />
-              </>
-            )}
 
-            <button
-              className="btn-primary w-full mt-6 flex justify-center items-center"
-              onClick={addToCart}
-              disabled={maxQuantity === 0 || isProcessing}
-            >
-              {isProcessing ? <Icons.loading /> : ""}
-              Add to Cart
-            </button>
-          </div>
+                <button
+                  className="btn-primary w-full mt-6 flex justify-center items-center"
+                  onClick={addToCart}
+                  disabled={maxQuantity === 0 || isProcessing}
+                >
+                  {isProcessing ? <Icons.loading /> : ""}
+                  Add to Cart
+                </button>
+              </div>
+            </>
+          )}
         </div>
 
         {/* Show Modal if item is added to cart successfully */}
