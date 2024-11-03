@@ -6,25 +6,25 @@
   html {
     font-family: "Poppins", sans-serif;
   }
-  h1 {
+  h1,.h1 {
     @apply text-[96px] leading-[116px] font-bold;
   }
-  h2 {
+  h2,.h2 {
     @apply text-[64px] leading-[92px] font-bold;
   }
-  h3 {
+  h3,.h3 {
     @apply text-[48px] leading-[72px] font-bold;
   }
-  h4 {
+  h4,.h4 {
     @apply text-[40px] leading-[60px] font-bold;
   }
-  h5 {
+  h5,.h5 {
     @apply text-[32px] leading-[48px] font-bold;
   }
-  h6 {
+  h6,.h6 {
     @apply text-[24px] leading-[32px] font-bold;
   }
-  .SubHeadLing {
+  .SubHeadLing,.text-subheading {
     @apply text-[18px] leading-[24px] font-semibold;
   }
   .Body-Text {
@@ -47,5 +47,11 @@
   }
   .btn-secondary {
     @apply bg-white border border-secondary-300 p-[7px_10px] min-h-[54px] grid gap-2 place-items-center transition hover:border-primary active:border-primary-700 disabled:bg-secondary-300 disabled:text-secondary-500;
+  }
+  .product-card-bg{
+    @apply w-full object-cover aspect-[343/370] blur-2xl lg:aspect-square opacity-0 transition-opacity;
+  }
+  .product-card:hover .product-card-bg{
+    @apply opacity-100;
   }
 }

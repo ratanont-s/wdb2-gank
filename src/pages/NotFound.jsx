@@ -1,7 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-const Errors = () => {
+const NotFound = () => {
   return (
     <div className="w-screen h-screen py-4 grid place-items-center text-secondary-500">
       <div className="container gap-10 grid">
@@ -12,10 +11,7 @@ const Errors = () => {
           className="w-full max-w-[325px] mx-auto"
         />
         <p className="text-center">Sorry, an unexpected error has occurred.</p>
-        <Link
-          className="btn-secondary w-full max-w-[200px] mx-auto"
-          to="/"
-        >
+        <Link className="btn-secondary w-full max-w-[200px] mx-auto" to="/">
           Home
         </Link>
       </div>
@@ -23,4 +19,4 @@ const Errors = () => {
   );
 };
 
-export default Errors;
+export default NotFound;

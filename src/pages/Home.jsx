@@ -1,8 +1,9 @@
 import React, { useEffect, useState, Fragment } from "react";
-import Hero from "../components/Hero";
+import Hero from "../components/home/Hero";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Icons } from "../components/Icons";
+import ProductCard from "../components/products/ProductCard";
 
 const BASE_URL = "https://api.storefront.wdb.skooldio.dev";
 
@@ -51,7 +52,7 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <div className="container mx-auto px-4 mt-[96px]">
+      <div className="container mt-[96px]">
         {loading ? (
           <LoadingView />
         ) : (
@@ -113,36 +114,9 @@ const FeaturedProductsView = ({ products }) => {
         Featured Products
       </h3>
 
-      <div className="grid col-span-full gap-10 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid col-span-full gap-10 sm:grid-cols-2 xl:grid-cols-4">
         {products?.map((product) => (
-          <div key={product.id} className="relative group cursor-pointer">
-            <Link to={`/products/${product.permalink}`}>
-              <img
-                className="mb-4 w-full h-[370px] object-cover"
-                src={`${product.imageUrls[0]}`}
-                alt={product.name}
-                loading="lazy"
-              />
-              <div className="grid gap-2">
-                <h6 className="truncate">{product.name}</h6>
-                <p className="truncate text-secondary-700">
-                  {product.description}
-                </p>
-                <div className="flex">
-                  {Array.from({ length: 5 }, (_, index) => (
-                    <Fragment key={index}>
-                      {index < product.ratings ? (
-                        <Icons.review />
-                      ) : (
-                        <Icons.review2 />
-                      )}
-                    </Fragment>
-                  ))}
-                </div>
-                <p className="text-right font-semibold">THB {product.price}</p>
-              </div>
-            </Link>
-          </div>
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </div>
