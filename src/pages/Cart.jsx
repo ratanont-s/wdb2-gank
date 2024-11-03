@@ -46,7 +46,7 @@ const Cart = () => {
         );
 
         setCart({ ...cartData, items: itemsWithDetails });
-        console.log(cartData);
+        // console.log(cartData);
         setCartItemsData(cartData);
       } catch (err) {
         setError("Failed to load cart. Please try again.");
