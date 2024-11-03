@@ -24,7 +24,6 @@ const MENUS = {
 
 const Header = () => {
   const { itemCount } = useContext(CartContext);
-  console.log("🚀 ~ Header ~ itemCount:", itemCount);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Toggle the menu's open/closed state
