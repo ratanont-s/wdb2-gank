@@ -17,13 +17,18 @@ const ProductCarousel = ({ images }) => {
   return (
     <div className="product-carousel">
       <Slider
+        className="lg:mb-5"
         arrows={true}
         asNavFor={nav2}
         ref={(slider) => (sliderRef1 = slider)}
       >
         {images?.map((image) => (
           <div key={image} className="px-1">
-            <img className="w-full" src={image} loading="lazy" />
+            <img
+              className="w-full aspect-[576/597] object-cover"
+              src={image}
+              loading="lazy"
+            />
           </div>
         ))}
       </Slider>
@@ -37,7 +42,11 @@ const ProductCarousel = ({ images }) => {
       >
         {images?.map((image) => (
           <div key={image} className="px-1">
-            <img src={image} loading="lazy" />
+            <img
+              className="w-full aspect-[135/162] object-cover"
+              src={image}
+              loading="lazy"
+            />
           </div>
         ))}
       </Slider>
