@@ -242,14 +242,14 @@ const ProductDetails = () => {
         </div>
 
         {!loading && (
-          <div className="grid gap-10 mb-20">
+          <div className="grid gap-10 mb-20 mt-[54px]">
             <h3 className="text-4xl mb-6 col-span-full text-center">
               People also like these
             </h3>
             <div className="grid col-span-full gap-10 sm:grid-cols-2 xl:grid-cols-4">
               {relatedProducts
-                ?.filter((p) => p.id !== product?.id) // กรองสินค้าปัจจุบันออก
-                ?.slice(0, 4) // แสดงแค่ 4 รายการ
+                ?.filter((p) => p.id !== product?.id)
+                ?.slice(0, 4)
                 ?.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
