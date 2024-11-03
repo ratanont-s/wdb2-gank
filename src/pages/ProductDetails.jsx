@@ -243,7 +243,7 @@ const ProductDetails = () => {
 
         {!loading && (
           <div className="grid gap-10 mb-20 mt-[88px]">
-            <h3 className="text-4xl mb-6 col-span-full text-center">
+            <h3 className="text-4xl mb-6 col-span-full">
               People also like these
             </h3>
             <div className="grid col-span-full gap-10 sm:grid-cols-2 xl:grid-cols-4">
