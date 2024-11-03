@@ -13,7 +13,7 @@ const AddCartModal = ({ imageUrl, productName, quantity, price, onClose }) => {
         </div>
         <div className="grid gap-4 md:grid-cols-[160px_1fr] md:gap-10 md:items-center">
           <img
-            className="w-full"
+            className="w-full aspect-square object-cover"
             src={imageUrl}
             alt={productName}
             loading="lazy"
