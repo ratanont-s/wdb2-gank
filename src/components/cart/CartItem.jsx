@@ -44,19 +44,19 @@ const CartItem = ({ item, onRemove, onUpdate }) => {
               Color
             </label>
             <select>
-              <option value="">Select Color</option>
+              <option value="">Color</option>
             </select>
           </div>
           <div>
             <label className="inline-block text-secondary-700 mb-2">Size</label>
             <select>
-              <option value="">Select Color</option>
+              <option value="">Size</option>
             </select>
           </div>
           <div>
             <label className="inline-block text-secondary-700 mb-2">Qty.</label>
             <select>
-              <option value="">Select Color</option>
+              <option value={item.quantity}>{item.quantity}</option>
             </select>
           </div>
         </div>

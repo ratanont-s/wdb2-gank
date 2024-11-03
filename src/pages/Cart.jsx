@@ -8,6 +8,7 @@ const Cart = () => {
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cartItemsData, setCartItemsData] = useState([]);
 
   useEffect(() => {
     // Get the cart ID from local storage
@@ -45,6 +46,8 @@ const Cart = () => {
         );
 
         setCart({ ...cartData, items: itemsWithDetails });
+        console.log(cartData);
+        setCartItemsData(cartData);
       } catch (err) {
         setError("Failed to load cart. Please try again.");
       } finally {
@@ -145,6 +148,7 @@ const Cart = () => {
                 ) : (
                   <CartList
                     items={cart?.items}
+                    cartItemsData={cartItemsData}
                     onRemove={removeItem}
                     onUpdate={updateItem}
                   />

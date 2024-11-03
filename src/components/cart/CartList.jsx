@@ -1,10 +1,12 @@
 import React from "react";
 import CartItem from "./CartItem";
 
-const CartList = ({ items, onRemove, onUpdate }) => {
+const CartList = ({ cartItemsData, onRemove, onUpdate }) => {
+  // console.log(cartItemsData);
+
   return (
     <ul className="grid gap-6 divide-y divide-secondary-300">
-      {items?.map((item) => (
+      {cartItemsData?.items?.map((item) => (
         <CartItem
           key={item.id}
           item={item}
