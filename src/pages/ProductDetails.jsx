@@ -6,6 +6,7 @@ import ColorSelector from "../components/productDetails/ColorSelector";
 import SizeSelector from "../components/productDetails/SizeSelector";
 import QuantitySelector from "../components/productDetails/QuantitySelector";
 import AddCartModal from "../components/productDetails/AddCartModal";
+import ProductCard from "../components/products/ProductCard";
 import { Icons } from "../components/Icons";
 import { formatCurrency } from "../utils/helpers";
 
@@ -20,19 +21,28 @@ const ProductDetails = () => {
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [showModal, setShowModal] = useState(false);
+  const [relatedProducts, setRelatedProducts] = useState([]);
 
   useEffect(() => {
-    const fetchProduct = async () => {
+    const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(
-          `https://api.storefront.wdb.skooldio.dev/products/${id}`
-        );
-        setProduct(response.data);
+        const [productResponse, relatedResponse] = await Promise.all([
+          axios.get(`https://api.storefront.wdb.skooldio.dev/products/${id}`),
+          axios.get("https://api.storefront.wdb.skooldio.dev/products", {
+            params: {
+              limit: 4,
+              sort: "ratings:desc",
+            },
+          }),
+        ]);
 
-        if (response.data.variants.length > 0) {
-          setSelectedColor(response.data.variants[0].color);
-          setSelectedSize(response.data.variants[0].size);
+        setProduct(productResponse.data);
+        setRelatedProducts(relatedResponse.data.data);
+
+        if (productResponse.data.variants.length > 0) {
+          setSelectedColor(productResponse.data.variants[0].color);
+          setSelectedSize(productResponse.data.variants[0].size);
         }
       } catch (err) {
         setError("Product not found or failed to load.");
@@ -41,7 +51,7 @@ const ProductDetails = () => {
       }
     };
 
-    fetchProduct();
+    fetchData();
   }, [id]);
 
   // Ensure product and variants are loaded before accessing
@@ -230,6 +240,22 @@ const ProductDetails = () => {
             </>
           )}
         </div>
+
+        {!loading && (
+          <div className="grid gap-10 mb-20">
+            <h3 className="text-4xl mb-6 col-span-full text-center">
+              People also like these
+            </h3>
+            <div className="grid col-span-full gap-10 sm:grid-cols-2 xl:grid-cols-4">
+              {relatedProducts
+                ?.filter((p) => p.id !== product?.id) // กรองสินค้าปัจจุบันออก
+                ?.slice(0, 4) // แสดงแค่ 4 รายการ
+                ?.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+            </div>
+          </div>
+        )}
 
         {/* Show Modal if item is added to cart successfully */}
         {showModal && (
