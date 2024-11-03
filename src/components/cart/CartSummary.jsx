@@ -6,7 +6,7 @@ const CartSummary = ({ itemsCount, cartItems }) => {
 
   // Calculate subtotal
   const subtotal = cartItems?.reduce(
-    (total, item) => total + item?.price * item?.quantity,
+    (total, item) => total + item?.promotionalPrice * item?.quantity,
     0
   );
 
@@ -35,7 +35,9 @@ const CartSummary = ({ itemsCount, cartItems }) => {
                   className="flex items-center justify-between"
                 >
                   <span>{item?.name}</span>
-                  <span>{formatCurrency(item?.price * item?.quantity)}</span>
+                  <span>
+                    {formatCurrency(item?.promotionalPrice * item?.quantity)}
+                  </span>
                 </li>
               ))}
             </>
