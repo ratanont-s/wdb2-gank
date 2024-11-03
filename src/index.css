@@ -54,4 +54,13 @@
   .product-card:hover .product-card-bg{
     @apply opacity-100;
   }
+  .product-carousel .slick-arrow{
+    @apply w-[30px] h-[30px] z-10 before:bg-no-repeat before:bg-contain before:opacity-100 before:w-full before:h-full before:block xl:w-[60px] xl:h-[60px];
+  }
+  .product-carousel .slick-prev{
+    @apply left-2 before:bg-[url('/prev.png')] xl:left-4;
+  }
+  .product-carousel .slick-next{
+    @apply right-2 before:bg-[url('/next.png')] xl:right-4;
+  }
 }
